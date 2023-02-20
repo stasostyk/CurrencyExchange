@@ -34,7 +34,7 @@
               <h5 class="mb-3">You send</h5>
               <div class="input-group">
                 <span class="input-group-text"><span class="fi fi-gb"></span></span>
-                <input type="text" class="form-control" id="sent" placeholder="Amount sent" oninput="if (validate(this)) exchange(this.value, true);" onpaste="pasted(this, true)">
+                <input type="text" class="form-control" id="sent" placeholder="Amount sent" oninput="if (validate(this)) exchange(this.value, true);" onpaste="pasted(this, true)" onkeypress="checkTooBig(this)">
                 <span class="input-group-text">GBP</span>
               </div>
               <small class="form-text text-muted">Tip: You can type into either boxes.</small>
@@ -46,7 +46,7 @@
               <h5 class="mb-3">They receive</h5>
               <div class="input-group">
                 <span class="input-group-text"><span class="fi fi-pl"></span></span>
-                <input type="text" class="form-control" id="received" placeholder="Amount received" oninput="if (validate(this)) exchange(this.value, false);" onpaste="pasted(this, false)">
+                <input type="text" class="form-control" id="received" placeholder="Amount received" oninput="if (validate(this)) exchange(this.value, false);" onpaste="pasted(this, false)" onkeypress="checkTooBig(this)">
                 <span class="input-group-text">PLN</span>
               </div>
             </div>

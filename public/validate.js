@@ -15,9 +15,10 @@ function validate(obj) {
 
 // check if the string is already a valid monetary value so that if it is, the currency is exchanged
 function isMonetaryFormat(val) {
-  return /^[\d]*$/.test(val) || // regex condition for just a number, eg. 1234
+  return (/^[\d]*$/.test(val) || // regex condition for just a number, eg. 1234
       /^[\d]*\.[\d]{0,2}$/.test(val) || // regex condition for decimal number, eg. 12.34
-      /^\.[\d]{0,2}$/.test(val); // regex condition for shorthand decimal, eg. .34 => 0.34
+      /^\.[\d]{0,2}$/.test(val)); // regex condition for shorthand decimal, eg. .34 => 0.34
+
 }
 
 // cleans up the string from non-monetary formats into monetary format described above
@@ -30,7 +31,19 @@ function clearFormatting(val) {
       val = val.substring(0, val.indexOf('.')+3) // if yes, the ignore the trailing numbers after 2 decimals
     }
   }
+
   return val;
+}
+
+// checks if number is too big (would produce overflow), and removes latest key if it is
+function checkTooBig(obj) {
+  var prev = obj.value; // store value before keypress
+  setTimeout(function() { // timout to wait for keypress
+    var modified = obj.value; // store new value with new key
+    if (parseFloat(clearFormatting(modified)) > 999999999999999) { // setup max number to avoid overflow
+      obj.value = prev; // override the number to keep within reasonable size (capped at 999999999999999)
+    }
+  }, 4);
 }
 
 // event function, ran when value is copy pasted
