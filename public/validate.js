@@ -36,18 +36,20 @@ function clearFormatting(val) {
 }
 
 // checks if number is too big (would produce overflow), and removes latest key if it is
-function checkTooBig(obj) {
+function checkTooBig(obj, toPLN) {
   var prev = obj.value; // store value before keypress
   setTimeout(function() { // timout to wait for keypress
     var modified = obj.value; // store new value with new key
     if (parseFloat(clearFormatting(modified)) > 999999999999999) { // setup max number to avoid overflow
       obj.value = prev; // override the number to keep within reasonable size (capped at 999999999999999)
+      if (validate(obj)) exchange(obj.value, toPLN); // recalculate exchange rate based on prev value
     }
   }, 4);
 }
 
 // event function, ran when value is copy pasted
 function pasted(obj, toPLN) {
+  checkTooBig(obj, toPLN); // ensure copy pasted number is not too big
   setTimeout(function(){ // timeout because event is triggered before value is pasted into input
       validate(obj); // validate the clipboard data
       exchange(obj.value, toPLN); // regardless of whether it was originally valid, exchange it
