@@ -17,7 +17,7 @@ function validate(obj) {
 function isMonetaryFormat(val) {
   return /^[\d]*$/.test(val) || // regex condition for just a number, eg. 1234
       /^[\d]*\.[\d]{0,2}$/.test(val) || // regex condition for decimal number, eg. 12.34
-      /^\.[\d]{0,2}$/.test(val) { // regex condition for shorthand decimal, eg. .34 => 0.34
+      /^\.[\d]{0,2}$/.test(val); // regex condition for shorthand decimal, eg. .34 => 0.34
 }
 
 // cleans up the string from non-monetary formats into monetary format described above
@@ -30,5 +30,17 @@ function clearFormatting(val) {
       val = val.substring(0, val.indexOf('.')+3) // if yes, the ignore the trailing numbers after 2 decimals
     }
   }
-  return val
+  return val;
+}
+
+// event function, ran when value is copy pasted
+function pasted(obj, toPLN) {
+  setTimeout(function(){ // timeout because event is triggered before value is pasted into input
+      validate(obj); // validate the clipboard data
+      exchange(obj.value, toPLN); // regardless of whether it was originally valid, exchange it
+    }, 4);
+}
+
+if (typeof module === 'object') { // check if we are running in a test environment
+    module.exports = {isMonetaryFormat, clearFormatting}; // if so, export functions for unit testing
 }
