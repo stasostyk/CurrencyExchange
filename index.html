@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
+    />
+    <link rel="stylesheet" href="/main.css">
+    <title>Currency Exchanger</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <div class="row h-100 justify-content-center exchange-box">
+        <div class="col-4 justify-content-center align-self-center">
+          <h1>Currency Exchange</h1>
+          <br>
+          <div class="input-box shadow-lg rounded">
+            <div class="row">
+              <h5 class="mb-3">You send</h5>
+              <div class="input-group">
+                <span class="input-group-text"><span class="fi fi-gb"></span></span>
+                <input type="text" class="form-control" id="sent" placeholder="Amount sent" oninput="if (validate(this)) exchange(this.value, true);">
+                <span class="input-group-text">GBP</span>
+              </div>
+
+              <small class="form-text text-muted">Tip: You can type into either boxes.</small>
+            </div>
+            <br>
+            <div class="row">
+              <h5 class="mb-3">They receive</h5>
+              <div class="input-group">
+                <span class="input-group-text"><span class="fi fi-pl"></span></span>
+                <input type="text" class="form-control" id="received" placeholder="Amount received" oninput="if (validate(this)) exchange(this.value, false);">
+                <span class="input-group-text">PLN</span>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <p id="rate">[Error 503] Could not load exchange rate :(</p>
+              <p><strong>No transfer fee</strong> </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="validate.js" charset="utf-8"></script>
+  <script src="exchanger.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</html>
