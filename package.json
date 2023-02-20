@@ -1,0 +1,14 @@
+{
+  "name": "currencyexchange",
+  "version": "1.0.0",
+  "description": "Currency exchanger for Remitly",
+  "main": "app.js",
+  "scripts": {
+    "start" : "nodemon app.js"
+  },
+  "author": "Stanislaw Ostyk-Narbutt",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
