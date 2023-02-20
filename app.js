@@ -10,3 +10,4 @@ app.get('/', function(req, res) { // main page
 });
 
 app.listen(port); // start listening
+console.log(`Listening on port ${port}`);
