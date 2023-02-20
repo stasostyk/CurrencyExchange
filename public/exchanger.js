@@ -25,7 +25,7 @@ function exchange(val, toPLN) {
 }
 
 // converts a value from PLN to GBP
-function convertTo(num, rate) {
+function convertFrom(num, rate) {
   var result = num / rate; // divide by exchange rate to convert GBP => PLN
   if (isNaN(result))
     return ""; // if the result is NaN, either rate failed to load or wrong input, hence return empty string
@@ -34,7 +34,7 @@ function convertTo(num, rate) {
 }
 
 // converts a number from GBP to PLN
-function convertFrom(num, rate) {
+function convertTo(num, rate) {
   var result = num * rate; // multiply by exchange rate to convert PLN => GBP
   if (isNaN(result))
     return ""; // if the result is NaN, either rate failed to load or wrong input, hence return empty string
