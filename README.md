@@ -12,7 +12,7 @@
 ```shell
 $ npm install
 ```
-4. Run the NodeJS server by running
+4. Restart your terminal then run the NodeJS server by running
 ```shell
 $ npm start
 ```
