@@ -6,13 +6,16 @@ function ExchangeRateSetup() {
     .then((response) => {response.json() // retrieve the json from the response
       .then((data) => {
         rate = data.rates[0].mid; // set rate to the real world rate from the API
-        document.getElementById("rate").innerHTML = `1 GBP = ${rate} PLN`; // communicate the rate on UI
+        document.getElementById("rate").innerHTML = `1 GBP = ${rate} PLN`; // display the rate
+      })
+      .finally(() => { // once the API call is over (successful or not), display the rate
+        document.getElementById("rate").style.display = "block"; // set to visible
       })
     });
 }
 
 // exchanges value from string from GBP to PLN using the NBP Web API (http://api.nbp.pl)
-async function exchange(val, toPLN) {
+function exchange(val, toPLN) {
   var num = parseFloat(val); // extract number from string value
 
   if (toPLN) // use toPLN to know if we're converting GBP => PLN, or if false, PLN => GBP
@@ -39,4 +42,6 @@ function convertFrom(num, rate) {
     return result.toFixed(2); // return the applied rate to two decimals using JavaScript's 'toFixed()'
 }
 
-module.exports = {convertTo, convertFrom};
+if (typeof module === 'object') { // check if we are running in a test environment
+    module.exports = {convertTo, convertFrom}; // if so, export functions for unit testing
+}
