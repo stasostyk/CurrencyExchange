@@ -6,7 +6,6 @@ html, body {
 .exchange-box {
   position: absolute;
   width: 100%;
-  border: 1px solid black;
 }
 
 span.fi {
@@ -17,4 +16,8 @@ span.fi {
 .input-box {
   height: 50%;
   padding: 10px;
+}
+
+#rate {
+  display: none;
 }
