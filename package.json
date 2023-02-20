@@ -4,7 +4,8 @@
   "description": "Currency exchanger for Remitly",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "jest --verbose ./tests"
   },
   "author": "Stanislaw Ostyk-Narbutt",
   "license": "ISC",
