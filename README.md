@@ -1,5 +1,5 @@
 # CurrencyExchange
- Currency exchange application between GBP and PLN for Remitly.
+ Currency exchange application between GBP and PLN.
 
  ## How to run
  1. Install NodeJS from [the official download page](https://nodejs.org/en/download/)
